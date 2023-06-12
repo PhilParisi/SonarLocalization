@@ -19,3 +19,20 @@ ResNet (need more details on what the heck this is) is trained on this data.
 New spectrograms can be fed to the model, and a prediction of which sub-region the spectrogram came from is outputted. As the number samples are increased, the number of sub-regions can be increased to obtain finer resolution for predictions. 
 
 # Installation & Setup
+The ML code is Python, and the data is stored in MATLAB .mat files. The below setup consists of installing proper Python packages to run the. py scripts. It is recommended that you use a Python virtual environment, though this is not necessary (you can ignore commands relating to virtual env below). These instructions were written for Unix systems.
+0. clone this repo into a folder
+1. open a new terminal
+2. ```cd /path/to/where/this/repo's/code/is```
+3. install virtualenv ```sudo apt install virtualenv```
+4. create a new virtual environment ```virtualenv nameOfYourEnv```
+5. source your virtualenv (activate it) ```source nameOfYourEnv/bin/activate```
+- when you are done with the environment, deactivate the env it with ```deactivate``` and then delete it with ```rm -r nameOfYourEnv```
+6. install the following python packages:
+- ```pip install pandas```
+- ```pip install numpy```
+- ```pip install keras```
+- ```pip install scipy```
+- ```pip install keras_applications```
+- ```pip install scikit-learn```
+- ```pip install matplotlib```
+- ```pip install tensorflow```
