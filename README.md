@@ -22,7 +22,7 @@ New spectrograms can be fed to the model, and a prediction of which sub-region t
 The ML code is Python, and the data is stored in MATLAB .mat files. The below setup consists of installing proper Python packages to run the. py scripts. 
 
 ## Install Python Packages
-It is recommended that you use a Python virtual environment, though this is not necessary (you can ignore commands relating to virtual env below). These instructions were written for Unix systems.
+It is recommended that you use a Python virtual environment, though this is not necessary (you can ignore commands relating to virtual env below). These instructions were written for Unix systems.  
 0. clone this repo into a folder
 1. open a new terminal
 2. ```cd /path/to/where/this/repo's/code/is```
