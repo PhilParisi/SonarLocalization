@@ -19,7 +19,10 @@ ResNet (need more details on what the heck this is) is trained on this data.
 New spectrograms can be fed to the model, and a prediction of which sub-region the spectrogram came from is outputted. As the number samples are increased, the number of sub-regions can be increased to obtain finer resolution for predictions. 
 
 # Installation & Setup
-The ML code is Python, and the data is stored in MATLAB .mat files. The below setup consists of installing proper Python packages to run the. py scripts. It is recommended that you use a Python virtual environment, though this is not necessary (you can ignore commands relating to virtual env below). These instructions were written for Unix systems.
+The ML code is Python, and the data is stored in MATLAB .mat files. The below setup consists of installing proper Python packages to run the. py scripts. 
+
+## Install Python Packages
+It is recommended that you use a Python virtual environment, though this is not necessary (you can ignore commands relating to virtual env below). These instructions were written for Unix systems.
 0. clone this repo into a folder
 1. open a new terminal
 2. ```cd /path/to/where/this/repo's/code/is```
@@ -36,3 +39,10 @@ The ML code is Python, and the data is stored in MATLAB .mat files. The below se
 - ```pip install scikit-learn```
 - ```pip install matplotlib```
 - ```pip install tensorflow```
+
+7. ensure you have the data files (allspecmic2dynFM.mat and mutliple .mat files), open the CN-Resnet152-Patch-Classification.py file, and update the file locations for variables `data1` and `data3` (should be in the first 30 lines or so).
+
+## Running the Program
+1. open new terminal
+2. source (activate) your virtualenv `source nameOfYourEnv/bin/activate`
+3. run the python script `python CN-Resnet152-Patch_Classification.py`
