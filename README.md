@@ -46,3 +46,22 @@ It is recommended that you use a Python virtual environment, though this is not 
 1. open new terminal
 2. source (activate) your virtualenv `source nameOfYourEnv/bin/activate`
 3. run the python script `python CN-Resnet152-Patch_Classification.py`
+
+When the script runs, tensorflow will likely output a bunch of warnings (this is typical). Only be worried if there are actual errors.  
+You know things are working if the model starts going through training epochs with an output similar to below:
+```bash
+Epoch 1/20
+1/494 [..............................] - ETA: 2:40 - loss: 0.8206 - accuracy: 0.703
+2/494 [..............................] - ETA: 3:10 - loss: 0.8532 - accuracy: 0.664  
+  ```
+
+### Troubleshooting
+This section is dedicated to specific errors and how to fix them
+
+#### Problem 1 -- Your Computer has a GPU and TensorFlow is failing
+If you do the basic install `pip install tensorflow` and your computer has a GPU (like mine) then you will probably run into some errors. My computer outputted `Epoch 1/20` but then hit an error. To fix this, I had to disable the GPU while running the program. This is because using a GPU requires a more advanced installation of tensorflow (and other compatibility things). To disable the GPU, add this to the start of your script:
+```python
+import os
+os.environ[CUDA_VISIBLE_DEVICES"] = "-1"
+```
+That fixed it for me! Note that 'fixing it' in this sense means commanding tensorflow to my CPU rather than GPU. However, a more advanced use case will find a way to install tensorflow properly to get things working with a GPU. Temp fix!
