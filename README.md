@@ -62,6 +62,6 @@ This section is dedicated to specific errors and how to fix them
 If you do the basic install `pip install tensorflow` and your computer has a GPU (like mine) then you will probably run into some errors. My computer outputted `Epoch 1/20` but then hit an error. To fix this, I had to disable the GPU while running the program. This is because using a GPU requires a more advanced installation of tensorflow (and other compatibility things). To disable the GPU, add this to the start of your script:
 ```python
 import os
-os.environ[CUDA_VISIBLE_DEVICES"] = "-1"
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 ```
 That fixed it for me! Note that 'fixing it' in this sense means commanding tensorflow to my CPU rather than GPU. However, a more advanced use case will find a way to install tensorflow properly to get things working with a GPU. Temp fix!
