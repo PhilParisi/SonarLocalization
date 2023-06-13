@@ -101,7 +101,7 @@ The GPS module is from ublox and can be connected via:
 1. USB-C cable to a computer. this allows you to use uBlox's [uCenter2 software](https://www.u-blox.com/en/u-center-2)
 2. or via serial pins (as shown below) over I2C to an arduino. this allows you to live parse data using the [GPS Arduino Library](https://github.com/sparkfun/SparkFun_u-blox_GNSS_v3) and then log it using a python script
 
-![ZED-F9P GPS module](./extras/rtk-gps.jpg)
+![ZED-F9P GPS module](./graphics/rtk-gps.jpg)
 
 The lights on the module indicate:
 1. PWR (red) --> the device is powered
@@ -130,7 +130,7 @@ To run:
 #### Example1_GetPositionAccuracy.ino with Example1_GetPositionAccuracy.py
 This .ino script is from the pre-built ublox arduino library. Setup is necessary -- see wiring diagram below. We have to use I2C serial comms. Connect jumper cables from the uBlox ZED-F9P (I2C contacts: GND, 3V3, SDA, SCL). The 3.3V will power the module and the SCL is a clock to time the data sent from SDA. 
 
-![wiring diagram](./extras/wiring_uBloxToCSV.JPG)
+![wiring diagram](./graphics/wiring_uBloxToCSV.JPG)
 
 To run:  
 0. setup the above wiring
