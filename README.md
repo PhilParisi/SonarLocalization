@@ -168,6 +168,12 @@ The name of the csv file contains the date and time when it was created, so you 
 
 
 ## Binary Data
+The binary data is stored by the batbot. There is 1 binary file created for every 'chirp'. A 'chirp' consists of an echo (send sonar out) and listen (receive reflected sound sin). The .bin filenames are the current datetime.  
+
+There are two bat ears, identified as 'right' and 'left'. In each binary file, the data from the right and left ear are concatenated as follows:
+- right ear data is saved in indices 0, 1, 2, ..., N//2 - 1
+- left ear data is saved in indices N//2, N//2 + 1, N//2 + 2, ..., N
+- for example, if N = 100, right indices are 0 to 49 and left indices are from 50 to 100
 
 ## Generating Spectrograms
 
