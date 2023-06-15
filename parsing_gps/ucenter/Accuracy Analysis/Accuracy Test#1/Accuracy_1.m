@@ -1,0 +1,137 @@
+% Specify the filename of your CSV file
+filename = 'Lat_Lon_Conversion_Test.csv';
+
+% Read the data from the CSV file
+data = readtable(filename);
+
+% Extract latitude and longitude columns
+longitude = data(:, 2).Variables;
+latitude = data(:, 3).Variables;
+
+% Convert latitude and longitude to radians
+lat1 = deg2rad(latitude);
+lon1 = deg2rad(longitude);
+lat2 = 0;  % Latitude reference point (e.g., 0 or any other desired point)
+lon2 = 0;  % Longitude reference point (e.g., 0 or any other desired point)
+
+% Earth's radius in kilometers
+R = 6371;
+
+% Define the start and end row indices for the base case
+base_start_indices = [2, 144, 259, 381, 562, 703, 924, 1050, 1163, 1284];  % start indices
+base_end_indices = [83, 195, 328, 461, 636, 778, 994, 1119, 1230, 1354];  % Example end indices
+
+% Preallocate table to store base case distances
+num_points = numel(base_start_indices);
+base_resultTable = table((1:num_points)', zeros(num_points, 1), zeros(num_points, 1), 'VariableNames', {'Point', 'Avg_Distance', 'Std_Deviation'});
+
+% Calculate distances for each start and end point in the base case
+for i = 1:num_points
+    % Extract latitude and longitude for the current range
+    lat_range = lat1(base_start_indices(i):base_end_indices(i));
+    lon_range = lon1(base_start_indices(i):base_end_indices(i));
+    
+    % Calculate distances using the Haversine formula
+    dlat = lat2 - lat_range;
+    dlon = lon2 - lon_range;
+    a = sin(dlat/2).^2 + cos(lat_range) .* cos(lat2) .* sin(dlon/2).^2;
+    c = 2 * atan2(sqrt(a), sqrt(1-a));
+    distances = R * c;
+    
+    % Calculate average distance
+    avg_distance = mean(distances);
+    
+    % Calculate standard deviation
+    std_deviation = std(distances);
+    
+    % Assign values to the base result table
+    base_resultTable.Avg_Distance(i) = avg_distance;
+    base_resultTable.Std_Deviation(i) = std_deviation;
+end
+
+% Format the Avg_Distance column with significant figures and units
+avg_distance_formatted = compose('%.4f km', base_resultTable.Avg_Distance);
+base_resultTable.Avg_Distance = avg_distance_formatted;
+
+% Display the base result table
+disp("Base Case Result:");
+disp(base_resultTable);
+
+
+%% Test 1
+% Specify the filename of your CSV file
+filename = 'Test$1$.csv';
+
+% Read the data from the CSV file
+data = readtable(filename);
+
+% Extract latitude and longitude columns
+longitude = data(:, 2).Variables;
+latitude = data(:, 3).Variables;
+
+% Convert latitude and longitude to radians
+lat1 = deg2rad(latitude);
+lon1 = deg2rad(longitude);
+lat2 = 0;  % Latitude reference point (e.g., 0 or any other desired point)
+lon2 = 0;  % Longitude reference point (e.g., 0 or any other desired point)
+
+% Define the start and end row indices for Test 1
+test_start_indices = [2, 117, 297, 387, 505, 633, 766, 876, 972, 1089];  % indices
+test_end_indices = [79, 257, 367, 458, 576, 696, 843, 935, 1047, 1169];  % end indices
+
+% Preallocate table to store Test 1 distances
+num_points = numel(test_start_indices);
+test_resultTable = table((1:num_points)', zeros(num_points, 1), zeros(num_points, 1), 'VariableNames', {'Point', 'Avg_Distance', 'Std_Deviation'});
+
+% Calculate distances for each start and end point in Test 1
+for i = 1:num_points
+    % Extract latitude and longitude for the current range
+    lat_range = lat1(test_start_indices(i):test_end_indices(i));
+    lon_range = lon1(test_start_indices(i):test_end_indices(i));
+    
+    % Calculate distances using the Haversine formula
+    dlat = lat2 - lat_range;
+    dlon = lon2 - lon_range;
+    a = sin(dlat/2).^2 + cos(lat_range) .* cos(lat2) .* sin(dlon/2).^2;
+    c = 2 * atan2(sqrt(a), sqrt(1-a));
+    distances = R * c;
+    
+    % Calculate average distance
+    avg_distance = mean(distances);
+    
+    % Calculate standard deviation
+    std_deviation = std(distances);
+    
+    % Assign values to the Test 1 result table
+    test_resultTable.Avg_Distance(i) = avg_distance;
+    test_resultTable.Std_Deviation(i) = std_deviation;
+end
+
+% Format the Avg_Distance column with significant figures and units
+avg_distance_formatted = compose('%.4f km', test_resultTable.Avg_Distance);
+test_resultTable.Avg_Distance = avg_distance_formatted;
+
+% Display the Test 1 result table
+disp("Test 1 Result:");
+disp(test_resultTable);
+
+
+%% Difference between base case and Test 1
+% Convert Avg_Distance columns to numeric values
+base_resultTable.Avg_Distance = str2double(strrep(base_resultTable.Avg_Distance, ' km', ''));
+test_resultTable.Avg_Distance = str2double(strrep(test_resultTable.Avg_Distance, ' km', ''));
+
+% Calculate the difference between average distances in meters
+difference = abs(test_resultTable.Avg_Distance - base_resultTable.Avg_Distance) * 1000;
+
+% Add the difference column to the base result table
+base_resultTable.Difference = difference;
+
+% Display the updated base result table with difference in meters
+disp("Base Case Result with Difference (in meters):");
+disp(base_resultTable(:, [1, end]));
+
+
+
+
+

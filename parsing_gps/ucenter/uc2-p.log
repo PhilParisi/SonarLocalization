@@ -1,0 +1,4 @@
+[15:47:58.102] [32mINFO[39m (25960): [36m[MAIN] [ipc.ts]: Preload ready index.html[39m [90m{"source":"ipc.ts","layer":"MAIN"}[39m
+[15:47:58.903] [32mINFO[39m (25960): [36m[UI] [LoginService]: Attempting to refresh user token[39m [90m{"source":"LoginService","layer":"UI"}[39m
+[15:48:03.642] [32mINFO[39m (25960): [36m[UI] [LoginService]: User token refreshed[39m [90m{"source":"LoginService","layer":"UI"}[39m
+[15:48:03.643] [32mINFO[39m (25960): [36m[MAIN] [ipc.ts]: Checking for updates[39m [90m{"source":"ipc.ts","layer":"MAIN"}[39m

@@ -1,0 +1,4 @@
+{"level":30,"time":1686124078102,"pid":25960,"hostname":"LAPTOP-VBJCI9VK","source":"ipc.ts","layer":"MAIN","msg":"Preload ready index.html"}
+{"level":30,"time":1686124078903,"pid":25960,"hostname":"LAPTOP-VBJCI9VK","source":"LoginService","layer":"UI","msg":"Attempting to refresh user token"}
+{"level":30,"time":1686124083642,"pid":25960,"hostname":"LAPTOP-VBJCI9VK","source":"LoginService","layer":"UI","msg":"User token refreshed"}
+{"level":30,"time":1686124083643,"pid":25960,"hostname":"LAPTOP-VBJCI9VK","source":"ipc.ts","layer":"MAIN","msg":"Checking for updates"}
