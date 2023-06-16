@@ -127,7 +127,7 @@ path = os.path.join(path, folders[userInputExpType])
 # Asks the user which data folder should be parsed
 folders = displayFolders(path)
 userInput = int(input("\nWhich folder would you like to parse?\n"))
-path = os.path.join(path, folders[userInputExpType])
+path = os.path.join(path, folders[userInput])
   
 # Get the list of all files and directories
 # in current working directory
@@ -135,12 +135,12 @@ dir_list = os.listdir(path)
 
 # Creates a folder within the current folder for the CSV files if it 
 # doesn't exist
-doesCSVExist = os.path.exists(path + "/CSVFiles")
+doesCSVExist = os.path.exists(path + "\\CSVFiles")
 if not doesCSVExist:
-    os.mkdir(path + "/CSVFiles")
+    os.mkdir(path + "\\CSVFiles")
 else:
     # Deletes content inside to make new files
-    deleteFolderContents(path + "/CSVFiles/")
+    deleteFolderContents(path + "\\CSVFiles\\")
 
 # Asks the user for which data that would like to get
 userInput, validUserInput = getEarData()
