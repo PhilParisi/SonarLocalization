@@ -104,28 +104,34 @@ def deleteFolderContents(deleteFolder):
     # End of stackoverflow code
 
 # Prints the folders in the current directory
-folderCount = 0
-folders = []
-for name in os.listdir("."):
-    if os.path.isdir(name):
-        print(str(folderCount) + ": " + name)
-        folders.append(name)
-        folderCount += 1
+def displayFolders(pathName):
+    folderCount = 0
+    folders = []
+    # for name in os.listdir("../data/batbot_testing"):
+    print("\n")
+    for name in os.listdir(pathName):
+        if os.path.isdir(os.path.join(pathName, name)):
+            print(str(folderCount) + ": " + name)
+            folders.append(name)
+            folderCount += 1
+    return folders
 
+# Accesses the data folder
+path = "..\\data\\batbot_testing"
+
+# Asks the user which experiment should be parsed
+folders = displayFolders(path)
+userInputExpType = int(input("\nWhich experiment would you like to parse?\n"))
+path = os.path.join(path, folders[userInputExpType]) 
+
+# Asks the user which data folder should be parsed
+folders = displayFolders(path)
 userInput = int(input("\nWhich folder would you like to parse?\n"))
-# path = "./" + folders[userInput]
-# print(path)
-
-# Get the path of current working directory
-currentPath = os.getcwd()
-path = currentPath + "\\" + folders[userInput]
-print(path)
+path = os.path.join(path, folders[userInputExpType])
   
 # Get the list of all files and directories
 # in current working directory
 dir_list = os.listdir(path)
-
-print(dir_list)
 
 # Creates a folder within the current folder for the CSV files if it 
 # doesn't exist
