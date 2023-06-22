@@ -2,8 +2,34 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# Prints the folders in the current directory
+def displayFolders(pathName):
+    folderCount = 0
+    folders = []
+    # for name in os.listdir("../data/batbot_testing"):
+    print("\n")
+    for name in os.listdir(pathName):
+        if os.path.isdir(os.path.join(pathName, name)):
+            print(str(folderCount) + ": " + name)
+            folders.append(name)
+            folderCount += 1
+    return folders
+
+# Accesses the data folder
+path = "..\\data\\batbot_testing"
+
+# Asks the user which experiment should be parsed
+folders = displayFolders(path)
+userInputExpType = int(input("\nWhich experiment would you like to parse?\n"))
+path = os.path.join(path, folders[userInputExpType]) 
+
+# Asks the user which data folder should be parsed
+folders = displayFolders(path)
+userInput = int(input("\nWhich folder would you like to parse?\n"))
+path = os.path.join(path, folders[userInput])
+
 # Path to the folder containing CSV files
-folder_path = 'CSVFiles'
+folder_path = os.path.join(path, 'CSVFiles')
 
 # Get a list of CSV file names in the folder
 csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
@@ -32,10 +58,18 @@ data = pd.read_csv(file_path)
 x = data.iloc[:, 0]
 y = data.iloc[:, 1]
 
-# Plot the data
+# # Plot the data
+plt.figure(1)
 plt.plot(x, y)
 plt.xlabel("index")
 plt.ylabel("amplitude")
 plt.title(f"Plot of {chosen_file}")
-plt.show()
 
+
+# Plot the Spectrogram
+plt.figure(2)
+plt.specgram(y, Fs=1/(x[1]-x[0]))  # Fs is the sampling frequency
+plt.xlabel("Time")
+plt.ylabel("Frequency")
+plt.title("Spectrogram")
+plt.show()
