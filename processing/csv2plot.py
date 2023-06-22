@@ -20,12 +20,12 @@ path = "..\\data\\batbot_testing"
 
 # Asks the user which experiment should be parsed
 folders = displayFolders(path)
-userInputExpType = int(input("\nWhich experiment would you like to parse?\n"))
+userInputExpType = int(input("\nWhich experiment would you like to plot?\n"))
 path = os.path.join(path, folders[userInputExpType]) 
 
 # Asks the user which data folder should be parsed
 folders = displayFolders(path)
-userInput = int(input("\nWhich folder would you like to parse?\n"))
+userInput = int(input("\nWhich folder contains the data you would like to plot?\n"))
 path = os.path.join(path, folders[userInput])
 
 # Path to the folder containing CSV files
