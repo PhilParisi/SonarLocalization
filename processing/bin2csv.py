@@ -108,7 +108,6 @@ def displayFolders(pathName):
     folderCount = 0
     folders = []
     # for name in os.listdir("../data/batbot_testing"):
-    print("\n")
     for name in os.listdir(pathName):
         if os.path.isdir(os.path.join(pathName, name)):
             print(str(folderCount) + ": " + name)

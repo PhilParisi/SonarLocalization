@@ -30,14 +30,14 @@ def createPlot(path, csvFile):
 
     # Extract the first and second columns for plotting
     x = data.iloc[:, 0]
-    y = data.iloc[:, 1] # * 1000
+    y = data.iloc[:, 1]
 
     # Plot the data
     plt.plot(x, y)
     plt.xlabel("index")
     plt.ylabel("amplitude")
     plt.title(f"Plot of {csvFile}")
-    plt.savefig(plotsPath + "\\" + ("Plot " + csvFile[1:-4]))
+    plt.savefig(plotsPath + "\\" + ("Plot_" + csvFile[1:-4]))
     plt.clf()
 
     # Plot the Spectrogram
@@ -45,9 +45,9 @@ def createPlot(path, csvFile):
     # Fs = 1.05 * 1000000 for hz
     plt.xlabel("Time")
     plt.ylabel("Frequency (kHz)")
-    plt.title("Spectrogram")
+    plt.title(f"Spectrogram of {csvFile}")
     plt.colorbar(label='Intensity (dB)')
-    plt.savefig(plotsPath + "\\" + ("Spectrogram " + csvFile[1:-4]))
+    plt.savefig(plotsPath + "\\" + ("Spectrogram_" + csvFile[1:-4]))
     plt.clf()
 
 
@@ -59,5 +59,6 @@ csv_files = [file for file in os.listdir(folder_path) if file.endswith('.csv')]
 
 # Creates the Plots folder and populates it with spectrograms and plots
 createPlotsFolder(bin2csv.path)
+print("\nCurrently processing files please wait.")
 for csv_file in csv_files:
     createPlot(bin2csv.path, csv_file)
