@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import bin2csv
+import numpy as np
 
 # Creates the Plots folder in the provided path
 def createPlotsFolder(path):
@@ -29,7 +30,7 @@ def createPlot(path, csvFile):
 
     # Extract the first and second columns for plotting
     x = data.iloc[:, 0]
-    y = data.iloc[:, 1]
+    y = data.iloc[:, 1] # * 1000
 
     # Plot the data
     plt.plot(x, y)
@@ -40,10 +41,12 @@ def createPlot(path, csvFile):
     plt.clf()
 
     # Plot the Spectrogram
-    plt.specgram(y, Fs=1/(x[1]-x[0]))  # Fs is the sampling frequency
+    plt.specgram(y, Fs=1.05 * 1000)  # Fs is the sampling frequency (this is in kHz instead of Hz)
+    # Fs = 1.05 * 1000000 for hz
     plt.xlabel("Time")
-    plt.ylabel("Frequency")
+    plt.ylabel("Frequency (kHz)")
     plt.title("Spectrogram")
+    plt.colorbar(label='Intensity (dB)')
     plt.savefig(plotsPath + "\\" + ("Spectrogram " + csvFile[1:-4]))
     plt.clf()
 

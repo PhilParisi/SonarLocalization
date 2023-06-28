@@ -68,8 +68,9 @@ plt.title(f"Plot of {chosen_file}")
 
 # Plot the Spectrogram
 plt.figure(2)
-plt.specgram(y, Fs=1/(x[1]-x[0]))  # Fs is the sampling frequency
+plt.specgram(y, Fs=1.05 * 1000)# Fs=1/(x[1]-x[0]))  # Fs is the sampling frequency
 plt.xlabel("Time")
-plt.ylabel("Frequency")
+plt.ylabel("Frequency (kHz)")
+plt.colorbar(label='Intensity (dB)')
 plt.title("Spectrogram")
 plt.show()
