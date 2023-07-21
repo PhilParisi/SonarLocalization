@@ -178,15 +178,15 @@ There are two bat ears, identified as 'right' and 'left'. In each binary file, t
 ## Generating Spectrograms
 There are a couple of ways to generate spectrograms. Both methods require a certain file structure to run properly.
 
-Large Folder
-|---data Folder
-|-------batbot_testing Folder
-|-----------folders with different experiment types
-|---------------folders containing bin files (probably a day in which you collected data)
-|---processing Folder
-|-------bin2csv.py
-|-------bin2plots.py
-|-------csv2plot.py
+Large Folder  
+|---data Folder  
+|-------batbot_testing Folder  
+|-----------folders with different experiment types  
+|---------------folders containing bin files (probably a day in which you collected data)  
+|---processing Folder  
+|-------bin2csv.py  
+|-------bin2plots.py  
+|-------csv2plot.py  
 
 The first method to generate spectrograms is to run the bin2csv.py and the csv2plot.py files. Running the bin2csv.py file will result in the user getting prompted to select the experiment folder in which they would like to parse as well as the folder that contains the bin files. Next, the user would run the csv2plot.py and would choose the same path and the csv file in which they would like to see a spectrogram and graph for the specific csv file chosen. 
 
