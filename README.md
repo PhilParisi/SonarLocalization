@@ -12,7 +12,7 @@ The problem is bounded to a given geographic location (e.g. a small forest). Tra
 Post-processing is conducted afterwards, which includes clustering GPS coordinates using K-means into discrete local sub-regions and generating spectrograms from the sonar reflections. This serves as the training data, which is used to train a ResNet (ML classification model).  
 
 ### New to Git?
-I'm also assuming you know how to use Git and GitHub, but if you don't here's a link to an article to help you get started. 
+I'm also assuming you know how to use Git and GitHub, but if you don't here's a [link](https://medium.com/@PhilParisi/getting-started-with-github-for-people-who-hate-github-1f25b071930d) to an article to help you get started. 
 
 # Machine Learning
 
